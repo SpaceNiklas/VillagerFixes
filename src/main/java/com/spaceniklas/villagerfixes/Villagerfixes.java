@@ -15,7 +15,7 @@ public final class Villagerfixes extends JavaPlugin {
         instance = this;
 
         Bukkit.getLogger().info("[VillagerFixes] Plugin is up!");
-        getCommand("invincibility").setExecutor(new InvincibilityCommand());
+        this.getCommand("invincibility").setExecutor(new InvincibilityCommand());
 
         Bukkit.getPluginManager().registerEvents(new Listeners(), this);
         saveDefaultConfig();
