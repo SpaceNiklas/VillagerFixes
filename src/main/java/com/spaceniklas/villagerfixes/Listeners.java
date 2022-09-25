@@ -1,15 +1,23 @@
 package com.spaceniklas.villagerfixes;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Pillager;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.VillagerCareerChangeEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.HashMap;
+
 public class Listeners implements Listener {
+
+    public static HashMap<Player, Boolean> countdown = new HashMap<>();
 
     @EventHandler
     public void onKill(EntityDeathEvent e){
@@ -32,5 +40,24 @@ public class Listeners implements Listener {
         }
     }
 
+    @EventHandler
+    public void onPlayerJoinEvent(PlayerJoinEvent e){
+        Player p = e.getPlayer();
+        if(!e.getPlayer().hasPlayedBefore()){
+            countdown.put(p, true);
+            Bukkit.getScheduler().runTaskLater(Villagerfixes.instance, () -> {countdown.put(p, false);},  Villagerfixes.config.getInt("cooldown") *60*20);
+        }
+    }
 
+    @EventHandler
+    public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent e){
+        if(countdown.get(e.getDamager()) != null && countdown.get(e.getDamager())){
+            e.setCancelled(true);
+            e.getDamager().sendMessage(ChatColor.RED + "You are still in invincibility! Do " + ChatColor.BOLD + "/invincibility" + ChatColor.RESET + ChatColor.RED + " to disable your invincibility!");
+        }
+        if(countdown.get(e.getEntity()) != null && countdown.get(e.getEntity())){
+            e.setCancelled(true);
+            e.getDamager().sendMessage(ChatColor.RED + "You are still in invincibility! Do " + ChatColor.BOLD + "/invincibility" + ChatColor.RESET + ChatColor.RED + " to disable your invincibility!");
+        }
+    }
 }
