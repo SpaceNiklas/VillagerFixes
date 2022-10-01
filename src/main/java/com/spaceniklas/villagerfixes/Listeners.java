@@ -54,11 +54,10 @@ public class Listeners implements Listener {
         if(countdown.get(e.getDamager()) != null && countdown.get(e.getDamager())){
             e.setCancelled(true);
             e.getDamager().sendMessage(ChatColor.translateAlternateColorCodes('&', Villagerfixes.config.getString("still-invincible")));
-            e.getDamager().sendMessage(ChatColor.RED + "You are still in invincibility! Do " + ChatColor.BOLD + "/invincibility" + ChatColor.RESET + ChatColor.RED + " to disable your invincibility!");
         }else
         if(countdown.get(e.getEntity()) != null && countdown.get(e.getEntity())){
+            e.getDamager().sendMessage(ChatColor.translateAlternateColorCodes('&', Villagerfixes.config.getString("still-invincible")));
             e.setCancelled(true);
-            e.getDamager().sendMessage(ChatColor.RED + "You are still in invincibility! Do " + ChatColor.BOLD + "/invincibility" + ChatColor.RESET + ChatColor.RED + " to disable your invincibility!");
         }
     }
 }
