@@ -6,7 +6,7 @@
 
     <groupId>com.spaceniklas</groupId>
     <artifactId>villagerfixes</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
     <packaging>jar</packaging>
 
     <name>VillagerFixes</name>

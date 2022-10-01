@@ -1,10 +1,9 @@
 name: VillagerFixes
-version: '1.1'
+version: '1.2'
 main: com.spaceniklas.villagerfixes.Villagerfixes
 api-version: 1.19
 authors: [ SpaceNiklas ]
 description: Stops Bad Omen on killing Raid Captian and rerolling Villager Trades!
 website: www.spaceniklas.com
 commands:
-  invincibility:
 
