@@ -6,6 +6,8 @@ command-name: 'invincibility' #The name of the command you have to execute to es
 
 #LANGUAGE SETTINGS
 #You can use colour codes by doing & and then a letter or number. Reference image: https://www.spigotmc.org/attachments/example2-png.402641/
-still-invincible: '&cYou are still in invincibility! Do &l/invincibility &r&cto disable your invincibility!' #Message send when player takes/gives damage to another entity.
+still-invincible-victim: '&cYou are still in invincibility! Do &l/invincibility &r&cto disable your invincibility!' #Message send when player takes/gives damage to another entity.
+still-invincible-damager: '&cThe player you are hitting is still in invincibility!' #Message send when player takes/gives damage to another entity.
 already-vincible: '&cYou are already able to damage/get damaged by other entities! If you believe that this is a bug please contact a server administrator!' #If a player runs e.g /invisibility but is already vincible.
 command-message: '&aYou are now able to damage/get damaged by other entities!' #Message when a player gets rid of their invisibility by command.
+make-invincible-players-damage-vincible-entities: false #Does what it says ;)

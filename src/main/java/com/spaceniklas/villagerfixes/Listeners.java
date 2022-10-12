@@ -51,12 +51,18 @@ public class Listeners implements Listener {
 
     @EventHandler
     public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent e){
+        if(Villagerfixes.config.getBoolean("make-invincible-players-damage-vincible-entities") && countdown.get(e.getDamager()) != null && countdown.get(e.getDamager()) && countdown.get(e.getEntity()) == null || Villagerfixes.config.getBoolean("make-invincible-players-damage-vincible-entities") && countdown.get(e.getDamager()) != null && countdown.get(e.getDamager()) && !countdown.get(e.getEntity())) {
+            if(!e.isCancelled()){
+                e.setCancelled(false);
+            }
+
+        }else
         if(countdown.get(e.getDamager()) != null && countdown.get(e.getDamager())){
             e.setCancelled(true);
-            e.getDamager().sendMessage(ChatColor.translateAlternateColorCodes('&', Villagerfixes.config.getString("still-invincible")));
-        }else
+            e.getDamager().sendMessage(ChatColor.translateAlternateColorCodes('&', Villagerfixes.config.getString("still-invincible-damager")));
+        }
         if(countdown.get(e.getEntity()) != null && countdown.get(e.getEntity())){
-            e.getDamager().sendMessage(ChatColor.translateAlternateColorCodes('&', Villagerfixes.config.getString("still-invincible")));
+            e.getDamager().sendMessage(ChatColor.translateAlternateColorCodes('&', Villagerfixes.config.getString("still-invincible-victim")));
             e.setCancelled(true);
         }
     }
