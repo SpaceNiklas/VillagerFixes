@@ -1,5 +1,6 @@
 
 #BASIC SETTINGS
+#v1.3
 
 cooldown: 15 #In minutes, Default: 15, Decides for how long a player cant hit/get damaged by entities.
 command-name: 'invincibility' #The name of the command you have to execute to escape the spawn invincibility.
